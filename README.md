@@ -1,2 +1,142 @@
-# SMB-Enumeration-and-Vulnerabilities
-This repository contains practical SMB vulnerability assessment work, covering enumeration, common SMB misconfigurations, known vulnerabilities, exploitation techniques, and remediation steps using Kali Linux and Windows virtual lab setups.
+## SMB-Lab-Setup-and-Basics
+This repository demonstrates a hands-on SMB lab setup and basic SMB access testing using Kali Linux and Windows virtual machines.
+
+
+## What is SMB?
+
+SMB (Server Message Block):
+A network protocol used to share files, folders, printers, and services between computers—mainly in Windows networks.
+
+SMB Vulnerability:
+Security weaknesses in SMB (like misconfigurations, weak authentication, or outdated versions) that attackers can exploit to gain unauthorized access, steal data, or execute remote code.
+
+## 🧰 Tools Used
+
+- Kali Linux
+- Windows 10/11
+- VirtualBox
+- SMB Protocol
+- Windows File Sharing
+
+## 🔍 SMB Enumeration (Overview)
+
+This repository focuses on lab setup and SMB access validation.
+Enumeration techniques are intentionally not included in this project.
+
+
+# 💻 Lab Setup
+
+## ⭐ 💡 Best Beginner Setup (ONLY ONE LAPTOP NEEDED)
+
+You will use:
+
+1️⃣ Kali Linux VM (attacker)
+
+2️⃣ Windows 10/11 VM (target)
+
+Both run on the same laptop using VirtualBox.
+
+## ⭐ STEP 1 — Create a Windows VM (Target Machine)
+
+In VirtualBox:
+
+New → Windows 11
+
+RAM: 3–4 GB
+
+Disk: 40 GB
+
+Install Windows normally
+
+After install:
+
+Go to:
+
+Control Panel →
+
+Network and Sharing Center →
+
+Advanced Sharing Settings →
+
+Turn ON these:
+
+✔ Network discovery
+
+✔ File and printer sharing
+
+<img width="500" height="394" alt="Screenshot 2025-12-15 103804" src="https://github.com/user-attachments/assets/0fd2ac07-0536-4b60-8ae8-3df10cb49f4f" />
+
+Windows is now ready to share files using SMB.
+
+
+## ⭐ STEP 2 — Put Both VMs on Same Network
+
+VirtualBox →
+Select Kali VM → Settings → Network →
+
+➡️ Host-only Adapter
+
+<img width="568" height="390" alt="Screenshot 2025-12-15 104238" src="https://github.com/user-attachments/assets/d07c0eb8-d401-479d-901b-da22adf91046" />
+<img width="570" height="394" alt="Screenshot 2025-12-15 104255" src="https://github.com/user-attachments/assets/d52b41f6-ae92-4b70-8602-a3c6a7b54912" />
+
+Now both VMs are connected to the same isolated host-only network.
+
+## ⭐ STEP 3 — Get Windows VM IP
+
+Inside Windows VM, open CMD: 
+
+Type: `ipconfig`
+
+<img width="587" height="365" alt="Screenshot 2025-12-15 201226" src="https://github.com/user-attachments/assets/b612e978-aa11-4094-b8dc-9eb6de793304" />
+
+IP Address: 192.168.56.101
+
+
+## ⭐ STEP 4 — Create a Shared Folder in Windows VM
+
+Make a folder → right-click → Properties → Sharing → Share → Everyone.
+
+Done.
+
+## ⭐ STEP 5: Test SMB
+In Kali
+
+File Manager → Ctrl + L
+
+
+Enter: `smb://192.168.56.101`
+
+Username → Windows username
+
+Password → Windows password
+
+
+✔ Folder should open now.
+
+<img width="508" height="371" alt="Screenshot 2025-12-15 203850" src="https://github.com/user-attachments/assets/aaa29682-e45b-4808-b2ae-e27e1f733c69" />
+
+Now Folder is open in Kali:
+
+<img width="410" height="342" alt="Screenshot 2025-12-15 205416" src="https://github.com/user-attachments/assets/cbfe6bf0-7c18-4bf0-b633-a6a2b89e8be4" />
+<img width="449" height="285" alt="Screenshot 2025-12-15 205527" src="https://github.com/user-attachments/assets/6c939774-1a4e-4426-88b4-c3fa1f3893e2" />
+
+
+## ✅ Conclusion
+
+This repository demonstrates a hands-on SMB lab setup using Kali Linux and Windows virtual machines to understand how SMB works in real-world environments.
+
+The lab highlights how improper SMB configurations can introduce security risks and serves as a foundation for SMB access testing in controlled environments.
+
+This project is intended for students and beginners in ethical hacking and cybersecurity labs.
+
+
+
+## 🛡️ Security Note & Disclaimer
+
+
+⚠️ This repository is strictly for educational and ethical purposes only.
+
+All testing was performed in a self-owned lab environment using virtual machines.
+Do NOT test SMB vulnerabilities on real systems or networks without explicit permission, as it may be illegal and unethical.
+
+The author is not responsible for misuse of the techniques demonstrated here.
